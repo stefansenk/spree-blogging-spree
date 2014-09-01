@@ -57,3 +57,16 @@ ul#blog_entry_entries {
   }
   span { cursor: pointer; }
 }
+
+.blog_entries {
+  .blog_left {
+    width: 25%;
+    float: left;
+  }
+
+  .blog_right {
+    width: 75%;
+    float: left;
+    padding-left: 1%;
+  }
+}

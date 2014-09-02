@@ -1,4 +1,4 @@
-<div id="blog_entry_container">
+<div id="blog_entry_container" class="columns twelve omega">
   <% if !@blog_entries.empty? %>
     <ul id="blog_entry_entries">
       <% @blog_entries.each do |blog_entry| %>
@@ -11,4 +11,4 @@
   <% else %>
     <p id="no_entries"><%= Spree.t(:no_blog_entries) %></p>
   <% end %>
-</div>  
+</div>

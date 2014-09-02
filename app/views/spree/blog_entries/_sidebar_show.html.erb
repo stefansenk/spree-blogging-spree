@@ -1,6 +1,0 @@
-<div id="blog_entry_sidebar">
-  <%= render 'spree/blog_entries/categories_list' %>
-  <%= render 'spree/blog_entries/tag_cloud' %>
-  <%= render 'spree/blog_entries/recent_blog_entries', recent_blog_entries: Spree::BlogEntry.recent(10) %>
-  <%= render 'spree/blog_entries/news_archive', news_archive: Spree::BlogEntry.organize_blog_entries %>
-</div>

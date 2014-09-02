@@ -1,8 +1,11 @@
 <div class="blog_tag_cloud_wrapper">
   <h6><%= Spree.t('blog.tags') %></h6>
   <ul class="blog_tag_cloud">
-    <% tag_cloud(Spree::BlogEntry.visible.tag_counts_on(:tags), %w(css1 css2 css3 css4)) do |tag, css_class| %>
-      <li><%= link_to tag.name, blog_tag_path(tag.name), :class => css_class %></li>
+    <% tags = Spree::BlogEntry.visible.tag_counts_on(:tags) %>
+    <% tag_cloud(tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+      <li>
+        <%= link_to tag.name, blog_tag_path(tag.name), :class => css_class %>
+      </li>
     <% end %>
   </ul>
 </div>

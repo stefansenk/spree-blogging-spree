@@ -1,5 +1,9 @@
 es:
   activerecord:
+    models:
+      spree/blog_entry:
+        one: Blog Entry
+        other: Blog Entries
     attributes:
       spree/blog_entry:
         title: Título

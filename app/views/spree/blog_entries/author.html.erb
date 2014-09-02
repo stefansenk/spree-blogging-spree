@@ -1,16 +1,18 @@
-
-<div class="columns twelve alpha omega blog_author_info">
-  <div class="columns six alpha">
-    <h1><%= "#{t :blog_author}: #{@author.nickname}" %></h1>
-    <%= link_to @author.website_url, @author.website_url unless @author.website_url.blank? %>
+<div class="row blog_entries">
+  <div class="columns four blog_left" data-hook>
+    <%= render :partial => 'spree/blog_entries/blog_sidebar' %>
   </div>
-  <div class="columns six omega">
-    <%= @author.bio_info %>
+
+  <div class="columnns twelve blog_right">
+    <div class="columns twelve alpha omega blog_author_info">
+      <div class="columns six alpha">
+        <h1><%= "#{Spree.t :blog_author}: #{@author.nickname}" %></h1>
+        <%= link_to @author.website_url, @author.website_url unless @author.website_url.blank? %>
+      </div>
+      <div class="columns six omega">
+        <%= @author.bio_info.html_safe %>
+      </div>
+    </div>
+    <%= render :partial => 'spree/blog_entries/blog_entries' %>
   </div>
 </div>
-
-<%= render :partial => 'spree/blog_entries/blog_entries' %>
-
-<% content_for :sidebar do %>
-  <%= render :partial => 'spree/blog_entries/sidebar_index' %>
-<% end %>

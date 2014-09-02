@@ -1,24 +1,28 @@
-<div id="blog_entry_container">
-  <div id="blog_entry_entry">
-
-    <h1><%= @blog_entry.title %></h1>
-
-    <div class="blog_entry_body">
-      <%== @blog_entry.body %>
-    </div>
-
-    <%= render :partial => 'spree/blog_entries/blog_entry_details', :locals => {:blog_entry => @blog_entry} %>
-  </div>
-
-  <%= render :partial => 'spree/blog_entries/comments', :locals => {:blog_entry => @blog_entry}  %>
-</div> 
-
-<% content_for :sidebar do %>
-  <%= render :partial => 'spree/blog_entries/sidebar_show' %>
-<% end %>
-
 <% content_for :head do %>
   <% if !@blog_entry.author.blank? and !@blog_entry.author.google_plus_url.blank? %>
     <link rel="author" href="<%= @blog_entry.author.google_plus_url %>"/>
   <% end %>
 <% end %>
+
+<div class="row blog_entries">
+  <div class="columns four blog_left" data-hook>
+    <%= render :partial => 'spree/blog_entries/blog_sidebar' %>
+  </div>
+
+  <div class="columnns twelve blog_right">
+    <div id="blog_entry_container">
+      <div id="blog_entry_entry">
+
+        <h1><%= @blog_entry.title %></h1>
+
+        <div class="blog_entry_body">
+          <%== @blog_entry.body %>
+        </div>
+
+        <%= render :partial => 'spree/blog_entries/blog_entry_details', :locals => {:blog_entry => @blog_entry} %>
+      </div>
+
+      <%= render :partial => 'spree/blog_entries/comments', :locals => {:blog_entry => @blog_entry}  %>
+    </div>
+  </div>
+</div>

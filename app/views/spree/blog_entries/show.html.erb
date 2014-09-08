@@ -9,6 +9,9 @@
 <% end %>
 
 <div id="blog_entry_container">
+  <div class="blog_entry_image">
+    <%= image_tag(blog_entry.blog_entry_image.attachment.url(:normal)) %>
+  </div>
   <div id="blog_entry_entry">
 
     <h1><%= @blog_entry.title %></h1>
@@ -17,8 +20,8 @@
       <%== @blog_entry.body %>
     </div>
 
-    <%= render :partial => 'spree/blog_entries/blog_entry_details', :locals => {:blog_entry => @blog_entry} %>
   </div>
-
-  <%= render :partial => 'spree/blog_entries/comments', :locals => {:blog_entry => @blog_entry}  %>
 </div>
+<div class="clear-fix"></div>
+<%= render :partial => 'spree/blog_entries/blog_entry_details', :locals => {:blog_entry => @blog_entry} %>
+<%= render :partial => 'spree/blog_entries/comments', :locals => {:blog_entry => @blog_entry}  %>

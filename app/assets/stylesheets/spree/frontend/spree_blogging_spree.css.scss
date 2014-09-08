@@ -11,15 +11,31 @@ the installer will append this file to the app vendored assets here: 'vendor/ass
 }
 .blog_entry_summary{
   margin: 10px 0;
-} 
+}
 ul#blog_entry_entries {
   list-style: none;
 
-  li { margin-bottom: 20px; }
+  li {
+    margin-bottom: 20px;
+    clear: both;
+
+    div.blog_entry {
+      div.blog_entry_image {
+        width: 20%;
+        float: left;
+      }
+
+      div.blog_entry_detail {
+        width: 80%;
+        float: left;
+        padding-left: 1%
+      }
+    }
+  }
 }
 
 /* tag cloud widget */
-.blog_tag_cloud { 
+.blog_tag_cloud {
   margin-bottom: 10px;
 
   li { display: inline-block; }
@@ -30,7 +46,7 @@ ul#blog_entry_entries {
 }
 
 /* recent blog entries widget */
-.recent_blog_entries { 
+.recent_blog_entries {
   margin-bottom: 10px;
 
   .blog_entry_date {
@@ -45,15 +61,27 @@ ul#blog_entry_entries {
   list-style: none;
 
   a { font-weight: bold; }
-  ul { 
-    list-style: none; 
-    margin-left: 16px; 
+  ul {
+    list-style: none;
+    margin-left: 16px;
   }
-  ul ul { 
-    list-style: none; 
+  ul ul {
+    list-style: none;
     margin-left: 24px;
 
     a { font-weight: normal; }
   }
   span { cursor: pointer; }
+}
+
+div#blog_entry_container {
+  div.blog_entry_image {
+    float: left;
+    width: 30%;
+  }
+  div#blog_entry_entry {
+    float: left;
+    width: 70%;
+    padding-left: 1%;
+  }
 }

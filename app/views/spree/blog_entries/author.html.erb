@@ -5,7 +5,7 @@
 <div class="columns twelve alpha omega blog_author_info">
   <div class="columns six alpha">
     <h1><%= "#{Spree.t :blog_author}: #{@author.nickname}" %></h1>
-    <%= link_to @author.website_url, @author.website_url unless @author.website_url.blank? %>
+    <%= link_to @author.website_url, author_website_url(@author.website_url), target: '_blank' unless @author.website_url.blank? %>
   </div>
   <div class="columns six omega">
     <%= @author.bio_info %>

@@ -45,5 +45,9 @@ module Spree
         yield tag, classes[index.nan? ? 0 : index.round]
       end
     end
+
+    def author_website_url(url)
+      url.match(/http/) ? url : "http://#{url}"
+    end
   end
 end

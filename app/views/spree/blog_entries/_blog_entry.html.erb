@@ -1,6 +1,6 @@
 <div class="blog_entry">
   <div class="blog_entry_image">
-    <%= image_tag(blog_entry.blog_entry_image.attachment.url(:normal)) %>
+    <%= image_tag(blog_entry.blog_entry_image.attachment.url(:normal)) if blog_entry.blog_entry_image %>
   </div>
   <div class="blog_entry_detail">
     <h2><%= link_to blog_entry.title, blog_entry_permalink(blog_entry) %></h2>

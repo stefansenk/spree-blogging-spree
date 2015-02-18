@@ -1,16 +1,16 @@
 <% content_for :page_title do %>
-   <%= Spree.t(:editing) %>: <%= @blog_entry.title %>
+    <%= Spree.t(:editing) %>: <%= @blog_entry.title %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <li><%= button_link_to Spree.t(:back_to_blog_list), spree.admin_blog_entries_url, :icon => 'arrow-left' %></li>
-<% end %>
+    <%= button_link_to Spree.t(:back_to_blog_list), spree.admin_blog_entries_url, { :class => "btn-success", :icon => 'arrow-left' } %>
+<% end if can?(:create, Spree::BlogEntry) %>
 
 <%= render "spree/shared/error_messages", :target => @blog_entry %>
 
 <%= form_for [:admin, @blog_entry] do |f| %>
-  <fieldset class="no-border-top">
-    <%= render :partial => f %>
-    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
-  </fieldset>
+    <fieldset class="no-border-top">
+      <%= render :partial => f %>
+      <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+    </fieldset>
 <% end %>

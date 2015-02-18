@@ -15,12 +15,12 @@
 
     <%= form.field_container :category_list, class: ['form-group'] do %>
         <%= form.label :category_list, Spree.t(:category_list)  %><br />
-        <%= form.text_field :category_list %>
+        <%= form.text_field :category_list, value: @blog_entry.category_list.to_s %>
     <% end %>
 
     <%= form.field_container :tag_list, class: ['form-group'] do %>
         <%= form.label :tag_list, Spree.t(:tag_list) %><br />
-        <%= form.text_field :tag_list %>
+        <%= form.text_field :tag_list, value: @blog_entry.tag_list.to_s %>
     <% end %>
 
     <% unless Rails.env.test? %>

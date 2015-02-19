@@ -7,11 +7,11 @@ describe "Blog Entry" do
       visit spree.admin_path
 
       @blog_entry = create(:blog_entry,
-        :title => "First blog entry",
-        :body => "Body of the blog entry.",
-        :summary => "",
-        :visible => true,
-        :published_at => DateTime.new(2010, 3, 11))
+                           :title => "First blog entry",
+                           :body => "Body of the blog entry.",
+                           :summary => "",
+                           :visible => true,
+                           :published_at => DateTime.new(2010, 3, 11))
       click_link "Blog"
     end
 
@@ -23,12 +23,14 @@ describe "Blog Entry" do
         page.should have_content("11 Mar 2010")
       end
       it "should display blog visible" do
-        page.should have_css('i.fa.fa-ok.green')
+        page.should have_css('i.icon-check')
       end
     end
 
     it "should edit an existing blog entry" do
-      within_row(1) { click_icon :edit }
+      # click on span.click-edit not working
+      # within_row(1) { click_icon :edit }
+      within_row(1) { find(".icon-edit").find(:xpath,".//..").click }
       fill_in 'Title', with: 'New title'
       fill_in 'Body', with: 'New body'
       fill_in 'Tags', with: 'tag1, tag2'
@@ -54,7 +56,8 @@ describe "Blog Entry" do
     it "should add an author to a blog entry" do
       user = create(:user, :email => "me@example.com")
       user.spree_roles << Spree::Role.find_or_create_by(name: 'blogger')
-      within_row(1) { click_icon :edit }
+      # within_row(1) { click_icon :edit }
+      within_row(1) { find(".icon-edit").find(:xpath,".//..").click }
       select "me@example.com", :from => 'Author'
       click_on 'Update'
       page.should have_content("Blog Entry has been successfully updated")
@@ -65,7 +68,8 @@ describe "Blog Entry" do
     it "should add a featured image to a blog entry" do
       file_path = Rails.root + "../../spec/support/image.png"
 
-      within_row(1) { click_icon :edit }
+      # within_row(1) { click_icon :edit }
+      within_row(1) { find(".icon-edit").find(:xpath,".//..").click }
       attach_file('blog_entry_blog_entry_image_attributes_attachment', file_path)
       click_button "Update"
       page.should have_content("successfully updated")

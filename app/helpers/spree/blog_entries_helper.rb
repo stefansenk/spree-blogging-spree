@@ -22,11 +22,11 @@ module Spree
     end
 
     def blog_full_article_html(blog_entry)
-      "<br><br>Read the full article #{link_to blog_entry.title, blog_entry_url_permalink(blog_entry)} at #{link_to "#{Spree::Config[:site_name]} Blog", blog_url}."
+      "<br><br>Read the full article #{link_to blog_entry.title, blog_entry_url_permalink(blog_entry)} at #{link_to "#{Spree::Store.current.name} Blog", blog_url}."
     end
 
     def blog_first_appeared_html(blog_entry)
-      "<br><br>The article #{link_to blog_entry.title, blog_entry_url_permalink(blog_entry)} first appeared on #{link_to "#{Spree::Config[:site_name]} Blog", blog_url}."
+      "<br><br>The article #{link_to blog_entry.title, blog_entry_url_permalink(blog_entry)} first appeared on #{link_to "#{Spree::Store.current.name} Blog", blog_url}."
     end
 
     def blog_entry_tag_list_html blog_entry

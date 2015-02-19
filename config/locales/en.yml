@@ -52,6 +52,7 @@ en:
     blog_category: Category
     blog_author: Author
     admin:
+      view_in_store: View in store
       tab:
         blog_entries: Blog entries
     blog:

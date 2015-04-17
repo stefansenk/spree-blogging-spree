@@ -1,0 +1,5 @@
+<% if can? :manage, Spree::BlogEntry %>
+  <ul class="nav nav-sidebar">
+    <%= tab Spree::BlogEntry, :label => Spree::BlogEntry.model_name.human(count: 1.1), :url => spree.admin_blog_entries_path, :icon => 'file' %>
+  </ul>
+<% end %>

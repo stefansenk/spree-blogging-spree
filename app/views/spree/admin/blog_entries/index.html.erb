@@ -32,7 +32,7 @@
           <td class="align-center"><%= blog_entry.title %></td>
           <td class="align-center"><%= blog_entry.summary.truncate(300) if blog_entry.summary %></td>
           <td class="align-center">
-            <%= content_tag(:i, '', :class => 'fa fa-ok green') if blog_entry.visible %>
+            <%= content_tag(:i, '', :class => 'icon icon-ok text-success') if blog_entry.visible %>
           </td>
           <td class="actions">
             <%= link_to_blog_in_store blog_entry, :no_text => true, target: '_blank' %>
@@ -51,4 +51,3 @@
     <%= link_to Spree.t(:add_one), spree.new_admin_blog_entry_path %>!
   </div>
 <% end %>
-

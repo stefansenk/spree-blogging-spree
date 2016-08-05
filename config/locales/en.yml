@@ -51,6 +51,8 @@ en:
     blog_tag: Tag
     blog_category: Category
     blog_author: Author
+    view_in_store: View in Store
+    back_to_blog_list: Back to blog list
     admin:
       tab:
         blog_entries: Blog entries

@@ -27,7 +27,7 @@ ru:
   spree:
     title: Заголовок
     body: Содержимое
-    summary: Summary
+    summary: Анонс
     permalink: Постоянная ссылка
     published_at: Дата публикации
     visible: Показывать
@@ -52,6 +52,8 @@ ru:
     blog_tag: Ключевое слово
     blog_category: Категория
     blog_author: Автор
+    view_in_store: Посмотреть в Магазине
+    back_to_blog_list: Назад к списку
     admin:
       tab:
         blog_entries: Блог

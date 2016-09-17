@@ -1,12 +1,12 @@
 <div id="blog_entry_container" class="columns twelve omega">
   <% if !@blog_entries.empty? %>
-    <ul id="blog_entry_entries">
+    <div class='row' id="blog_entry_entries">
       <% @blog_entries.each do |blog_entry| %>
         <li>
           <%= render :partial => 'spree/blog_entries/blog_entry', :locals => {:blog_entry => blog_entry} %>
         </li>
       <% end %>
-    </ul>
+    </div>
     <%= paginate @blog_entries %>
   <% else %>
     <p id="no_entries"><%= Spree.t(:no_blog_entries) %></p>

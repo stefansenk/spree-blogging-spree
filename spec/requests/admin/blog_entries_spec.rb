@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Blog Entry" do
+describe "Blog Entry", :js => true do
   context "as admin user" do
     before(:each) do
       sign_in_as!(create(:admin_user))
@@ -12,7 +12,7 @@ describe "Blog Entry" do
         :summary => "",
         :visible => true,
         :published_at => DateTime.new(2010, 3, 11))
-      click_link "Blog"
+      click_on "Blog"
     end
 
     context "index page" do
@@ -23,7 +23,7 @@ describe "Blog Entry" do
         page.should have_content("11 Mar 2010")
       end
       it "should display blog visible" do
-        page.should have_css('i.fa.fa-ok.green')
+        page.should have_css('.icon.icon-show.text-success')
       end
     end
 
@@ -44,8 +44,8 @@ describe "Blog Entry" do
       page.should have_content("New body")
       page.should have_content("New summary")
       find_field('blog_entry_title').value.should == "New title"
-      find_field('blog_entry_tag_list').value.should == "tag1, tag2"
-      find_field('blog_entry_category_list').value.should == "cat1, cat2"
+      find_field('blog_entry_tag_list').value.should == "tag1 tag2"
+      find_field('blog_entry_category_list').value.should == "cat1 cat2"
       find_field('blog_entry_published_at').value.should == "2013/02/01"
       find_field('blog_entry_visible').value.should == "1"
       find_field('blog_entry_permalink').value.should == "some-permalink-path"

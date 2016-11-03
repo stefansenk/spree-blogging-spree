@@ -1,27 +1,34 @@
 
 <div class="row">
-  <div class="alpha ten columns">
-
+  <div class="col-md-12">
     <%= form.field_container :title do %>
-      <%= form.label :title, Spree.t(:title) %> <span class="required">*</span><br />
-      <%= form.text_field :title, :class => 'fullwidth title' %>
+	<div class="form-group">
+      <%= form.label :title, Spree.t(:title) %> <span class="text-danger">*</span><br />
+      <%= form.text_field :title, :class => 'form-control' %>
       <%= form.error_message_on :title %>
+  </div><!-- form-group -->
     <% end %>
 
     <%= form.field_container :permalink do %>
-      <%= form.label :permalink, Spree.t(:permalink) %> <span class="required">*</span><br />
-      <%= form.text_field :permalink, :class => 'fullwidth' %>
+		<div class="form-group">
+      <%= form.label :permalink, Spree.t(:permalink) %> <span class="text-danger">*</span><br />
+      <%= form.text_field :permalink, :class => 'form-control' %>
       <%= form.error_message_on :permalink %>
+	  </div><!-- form-group -->
     <% end %>
 
     <%= form.field_container :category_list do %>
-      <%= form.label :category_list, Spree.t(:category_list)  %><br />
-      <%= form.text_field :category_list, :class => 'fullwidth' %>
+	<div class="form-group">
+      <%= form.label :category_list, Spree.t(:category_list)  %>
+      <%= form.text_field :category_list, value: @blog_entry.category_list.join(', ') %>
+	  </div><!-- form-group -->
     <% end %>
 
     <%= form.field_container :tag_list do %>
-      <%= form.label :tag_list, Spree.t(:tag_list) %><br />
-      <%= form.text_field :tag_list, :class => 'fullwidth' %>
+	<div class="form-group">
+      <%= form.label :tag_list, Spree.t(:tag_list) %>
+      <%= form.text_field :tag_list, value: @blog_entry.tag_list.join(', ') %>
+	  </div><!-- form-group -->
     <% end %>
 
     <% unless Rails.env.test? %>
@@ -30,70 +37,90 @@
         $("#blog_entry_category_list").select2({tags: <%= Spree::BlogEntry.tag_counts_on(:categories).map{|t| t.name }.to_json.html_safe %> });
       </script>
     <% end %>
+</div><!-- col -->
+</div><!-- row -->
 
-
-    <div class="columns five alpha">
+<div class="row">
+    <div class="col-sm-6">
       <%= form.field_container :published_at do %>
-        <%= form.label :published_at, Spree.t(:published_at) %><br />
+	  <div class="form-group">
+        <%= form.label :published_at, Spree.t(:published_at) %>
         <%= form.error_message_on :published_at %>
         <% if @blog_entry.published_at? %>
           <% published_at = l(@blog_entry.published_at, :format => Spree.t('date_picker.format')) %>
         <% else %>
           <% published_at = nil %>
         <% end %>
-        <%= form.text_field :published_at, :value => published_at, :class => 'datepicker' %>
+        <%= form.text_field :published_at, :value => published_at, :class => 'datepicker form-control' %>
       <% end %>
+	  </div><!-- form-group -->
     </div>
 
-    <div class="columns five omega">
+    <div class="col-sm-4 col-sm-offset-2">
       <%= form.field_container :visible do %>
         <%= form.label :visible, Spree.t(:visible) %><br />
         <%= form.check_box :visible %>
         <%= form.error_message_on :visible %>
       <% end %>
-    </div>
-
-  </div>
-
-  <div class="omega six columns">
+    </div><!-- col -->
+  </div><!-- row -->
+<div class='row'>
+  <div class="col-sm-6">
 
     <%= form.field_container :author_id do %>
       <%= form.label :author_id, Spree.t(:author_id) %><br />
       <%= form.select :author_id, Spree.user_class.joins(:spree_roles).where("#{Spree::Role.table_name}.name" => "blogger").collect {|u| [u.email, u.id]}, {:include_blank => true}, :class => 'select2' %>
     <% end %>
-
+	</div><!-- col-sm-6 -->	
+	</div><!-- row -->
+<div class='row'>
+  <div class="col-sm-6">
     <%= field_set_tag Spree.t(:blog_entry_featured_image) do %>
       <% @blog_entry.build_blog_entry_image unless @blog_entry.blog_entry_image %>
 
       <%= form.fields_for :blog_entry_image do |blog_entry_image_field| %>
         <%= form.field_container :blog_entry_image_attachment do %>
           <% unless @blog_entry.blog_entry_image.new_record? %>
-            <div class="blog_entry_image_thumbnail">
+            <div class="blog_entry_image_thumbnail thumbnail">
               <%= link_to image_tag(@blog_entry.blog_entry_image.attachment.url(:mini)), @blog_entry.blog_entry_image.attachment.url(:large) %>
               <%= @blog_entry.blog_entry_image.attachment_file_name %><br/>
             </div>
           <% end %>
-          <%= blog_entry_image_field.file_field :attachment %>
+          <%= blog_entry_image_field.file_field :attachment, :class => 'form-control'  %>
         <% end %>
-
+</div><!-- col-sm-6 -->
+<div class="col-sm-6">
         <%= form.field_container :blog_entry_image_alt do %>
-          <%= blog_entry_image_field.label :alt, Spree.t(:alt_text) %><br/>
-          <%= blog_entry_image_field.text_field :alt %>
+		 <div class="form-group">
+          <%= blog_entry_image_field.label :alt, Spree.t(:alt_text) %>
+          <%= blog_entry_image_field.text_field :alt , :class => 'form-control' %>
+	  </div><!-- form-group -->
         <% end %>
+</div><!-- col-sm-6 -->		
       <% end %>
     <% end %>
 
-  </div>
 </div>
-
+</div><!-- row -->
+<div class='row'>
+  <div class="col-sm-12">
 <%= form.field_container :body do %>
-  <%= form.label :body %> <span class="required">*</span><br />
-  <%= form.text_area :body, {:cols => 60, :rows => 4, :class => 'fullwidth', :id => 'blog_entry_body'} %>
+<div class="form-group">
+  <%= form.label :body %> <span class="text-danger">*</span>
+  <%= form.text_area :body, { :rows => 10, :class => 'form-control', :id => 'blog_entry_body'} %>
   <%= form.error_message_on :body %>
+  </div><!-- form-group -->
 <% end %>
-
+</div><!-- col -->
+</div><!-- row -->
+<div class='row'>
+  <div class="col-sm-12">
 <%= form.field_container :summary do %>
-  <%= form.label :summary %><br />
-  <%= form.text_area :summary, {:cols => 60, :rows => 4, :class => 'fullwidth', :id => 'blog_entry_summary'} %>
+<div class="form-group">
+  <%= form.label :summary %>
+  <%= form.text_area :summary, { :rows => 4, :class => 'form-control', :id => 'blog_entry_summary'} %>
   <%= form.error_message_on :summary %>
+   </div><!-- form-group -->
 <% end %>
+</div><!-- col -->
+</div><!-- row -->

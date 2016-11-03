@@ -1,9 +1,9 @@
 <% content_for :page_title do %>
-   <%= Spree.t(:editing) %>: <%= @blog_entry.title %>
+   <%= Spree.t(:editing_resource) %>: <%= ERB.new(@blog_entry.title).result(binding).html_safe %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <li><%= button_link_to Spree.t(:back_to_blog_list), spree.admin_blog_entries_url, :icon => 'arrow-left' %></li>
+<%= button_link_to Spree.t(:back_to_blog_list), spree.admin_blog_entries_url, :icon => 'arrow-left' %>
 <% end %>
 
 <%= render "spree/shared/error_messages", :target => @blog_entry %>

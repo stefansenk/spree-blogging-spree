@@ -2,12 +2,12 @@
   <%= render :partial => 'spree/blog_entries/blog_sidebar' %>
 <% end %>
 
-<div class="columns twelve alpha omega blog_author_info">
-  <div class="columns six alpha">
+<div class="row blog_author_info">
+  <div class="col-md-6">
     <h1><%= "#{Spree.t :blog_author}: #{@author.nickname}" %></h1>
     <%= link_to @author.website_url, @author.website_url unless @author.website_url.blank? %>
   </div>
-  <div class="columns six omega">
+  <div class="col-md-6">
     <%= @author.bio_info %>
   </div>
 </div>

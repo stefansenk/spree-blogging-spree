@@ -31,7 +31,7 @@ Installation
 Add to your Gemfile:
 
 ```ruby
-gem 'spree_blogging_spree', github: 'stefansenk/spree-blogging-spree'
+gem 'spree_blogging_spree', github: 'krazedkrish/spree-blogging-spree', branch: '3-0-stable'
 ```
 
 Bundle your dependencies and run the installation generator:

@@ -24,6 +24,7 @@ en:
         google_plus_url: Google Plus URL
         bio_info: Biographical info
   spree:
+    editing: Editing
     title: Title
     body: Body
     summary: Summary

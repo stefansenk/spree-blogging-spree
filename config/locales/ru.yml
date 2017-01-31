@@ -25,6 +25,7 @@ ru:
         google_plus_url: Ссылка на профиль в Google Plus
         bio_info: Биография
   spree:
+    editing: Редактирование
     title: Заголовок
     body: Содержимое
     summary: Анонс

@@ -24,6 +24,7 @@ en:
         google_plus_url: Google Plus URL
         bio_info: Biographical info
   spree:
+    editing: Editing
     title: Title
     body: Body
     summary: Summary
@@ -51,6 +52,8 @@ en:
     blog_tag: Tag
     blog_category: Category
     blog_author: Author
+    view_in_store: View in Store
+    back_to_blog_list: Back to blog list
     admin:
       tab:
         blog_entries: Blog entries

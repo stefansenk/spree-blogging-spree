@@ -5,8 +5,9 @@ ru:
   activerecord:
     models:
       spree/blog_entry:
-        one: Blog Entry
-        other: Blog Entries
+        one: Публикация
+        other: Публикации
+        many: Публикаций
     attributes:
       spree/blog_entry:
         title: Заголовок
@@ -24,9 +25,10 @@ ru:
         google_plus_url: Ссылка на профиль в Google Plus
         bio_info: Биография
   spree:
+    editing: Редактирование
     title: Заголовок
     body: Содержимое
-    summary: Summary
+    summary: Анонс
     permalink: Постоянная ссылка
     published_at: Дата публикации
     visible: Показывать
@@ -51,6 +53,8 @@ ru:
     blog_tag: Ключевое слово
     blog_category: Категория
     blog_author: Автор
+    view_in_store: Посмотреть в Магазине
+    back_to_blog_list: Назад к списку
     admin:
       tab:
         blog_entries: Блог

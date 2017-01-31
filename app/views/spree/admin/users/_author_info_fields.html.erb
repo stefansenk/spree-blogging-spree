@@ -1,26 +1,28 @@
-<div class="ten columns alpha omega">
-  <div class="alpha five columns">
-    <%= f.field_container :nickname do %>
-      <%= f.label :nickname, Spree.t(:nickname) %>
-      <%= f.text_field :nickname, :class => 'fullwidth' %>
-      <%= error_message_on :user, :nickname %>
-    <% end %>
-    <%= f.field_container :website_url do %>
-      <%= f.label :website_url, Spree.t(:website_url) %>
-      <%= f.text_field :website_url, :class => 'fullwidth' %>
-      <%= error_message_on :user, :website_url %>
-    <% end %>
-    <%= f.field_container :google_plus_url do %>
-      <%= f.label :google_plus_url, Spree.t(:google_plus_url) %>
-      <%= f.text_field :google_plus_url, :class => 'fullwidth' %>
-      <%= f.error_message_on :google_plus_url %>
-    <% end %>
-  </div>
-  <div class="omega five columns">
-    <%= f.field_container :bio_info do %>
-      <%= f.label :bio_info, Spree.t(:bio_info) %>
-      <%= f.text_area :bio_info, {:rows => 4, :class => 'fullwidth'} %>
-    <%= f.error_message_on :bio_info %>
-    <% end %>
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.field_container :nickname do %>
+        <%= f.label :nickname, Spree.t(:nickname) %>
+        <%= f.text_field :nickname, :class => 'form-control' %>
+        <%= error_message_on :user, :nickname %>
+      <% end %>
+      <%= f.field_container :website_url do %>
+        <%= f.label :website_url, Spree.t(:website_url) %>
+        <%= f.text_field :website_url, :class => 'form-control' %>
+        <%= error_message_on :user, :website_url %>
+      <% end %>
+      <%= f.field_container :google_plus_url do %>
+        <%= f.label :google_plus_url, Spree.t(:google_plus_url) %>
+        <%= f.text_field :google_plus_url, :class => 'form-control' %>
+        <%= f.error_message_on :google_plus_url %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= f.field_container :bio_info do %>
+        <%= f.label :bio_info, Spree.t(:bio_info) %>
+        <%= f.text_area :bio_info, {:rows => 4, :class => 'form-control'} %>
+      <%= f.error_message_on :bio_info %>
+      <% end %>
+    </div>
   </div>
 </div>

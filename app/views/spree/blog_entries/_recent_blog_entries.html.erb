@@ -1,12 +1,12 @@
 <% if recent_blog_entries.present? %>
-  <div class="recent_blog_entries_wrapper">
+  <div class='recent_blog_entries_wrapper'>
     <h6><%= Spree.t('blog.recent_entries') %></h6>
-    <ul class="recent_blog_entries">
+    <ul class='recent_blog_entries'>
       <% recent_blog_entries.each do |blog_entry| %>
         <li>
           <%= link_to(blog_entry_permalink(blog_entry)) do %>
             <%= blog_entry.title %>
-            <span class="blog_entry_date"><%= "#{time_ago_in_words blog_entry.published_at} #{Spree.t('blog.ago')}" %></span> 
+            <span class='blog_entry_date small'><%= "#{time_ago_in_words blog_entry.published_at} #{Spree.t('blog.ago')}" %></span> 
           <% end %>
         </li>
       <% end %>

@@ -1,27 +1,26 @@
-
 <div class="row">
-  <div class="alpha ten columns">
+  <div class="col-md-6">
 
-    <%= form.field_container :title do %>
+    <%= form.field_container :title, class: ['form-group'] do %>
       <%= form.label :title, Spree.t(:title) %> <span class="required">*</span><br />
-      <%= form.text_field :title, :class => 'fullwidth title' %>
+      <%= form.text_field :title, :class => 'form-control title' %>
       <%= form.error_message_on :title %>
     <% end %>
 
-    <%= form.field_container :permalink do %>
+    <%= form.field_container :permalink, class: ['form-group'] do %>
       <%= form.label :permalink, Spree.t(:permalink) %> <span class="required">*</span><br />
-      <%= form.text_field :permalink, :class => 'fullwidth' %>
+      <%= form.text_field :permalink, :class => 'form-control' %>
       <%= form.error_message_on :permalink %>
     <% end %>
 
-    <%= form.field_container :category_list do %>
+    <%= form.field_container :category_list, class: ['form-group'] do %>
       <%= form.label :category_list, Spree.t(:category_list)  %><br />
-      <%= form.text_field :category_list, :class => 'fullwidth' %>
+      <%= form.text_field :category_list, :class => 'form-control' %>
     <% end %>
 
-    <%= form.field_container :tag_list do %>
+    <%= form.field_container :tag_list, class: ['form-group'] do %>
       <%= form.label :tag_list, Spree.t(:tag_list) %><br />
-      <%= form.text_field :tag_list, :class => 'fullwidth' %>
+      <%= form.text_field :tag_list, :class => 'form-control' %>
     <% end %>
 
     <% unless Rails.env.test? %>
@@ -33,7 +32,7 @@
 
 
     <div class="columns five alpha">
-      <%= form.field_container :published_at do %>
+      <%= form.field_container :published_at, class: ['form-group'] do %>
         <%= form.label :published_at, Spree.t(:published_at) %><br />
         <%= form.error_message_on :published_at %>
         <% if @blog_entry.published_at? %>
@@ -41,12 +40,12 @@
         <% else %>
           <% published_at = nil %>
         <% end %>
-        <%= form.text_field :published_at, :value => published_at, :class => 'datepicker' %>
+        <%= form.text_field :published_at, :value => published_at, :class => 'datepicker form-control' %>
       <% end %>
     </div>
 
     <div class="columns five omega">
-      <%= form.field_container :visible do %>
+      <%= form.field_container :visible, class: ['form-group'] do %>
         <%= form.label :visible, Spree.t(:visible) %><br />
         <%= form.check_box :visible %>
         <%= form.error_message_on :visible %>
@@ -55,9 +54,9 @@
 
   </div>
 
-  <div class="omega six columns">
+  <div class="col-md-6">
 
-    <%= form.field_container :author_id do %>
+    <%= form.field_container :author_id, class: ['form-group'] do %>
       <%= form.label :author_id, Spree.t(:author_id) %><br />
       <%= form.select :author_id, Spree.user_class.joins(:spree_roles).where("#{Spree::Role.table_name}.name" => "blogger").collect {|u| [u.email, u.id]}, {:include_blank => true}, :class => 'select2' %>
     <% end %>
@@ -66,7 +65,7 @@
       <% @blog_entry.build_blog_entry_image unless @blog_entry.blog_entry_image %>
 
       <%= form.fields_for :blog_entry_image do |blog_entry_image_field| %>
-        <%= form.field_container :blog_entry_image_attachment do %>
+        <%= form.field_container :blog_entry_image_attachment, class: ['form-group'] do %>
           <% unless @blog_entry.blog_entry_image.new_record? %>
             <div class="blog_entry_image_thumbnail">
               <%= link_to image_tag(@blog_entry.blog_entry_image.attachment.url(:mini)), @blog_entry.blog_entry_image.attachment.url(:large) %>
@@ -76,9 +75,9 @@
           <%= blog_entry_image_field.file_field :attachment %>
         <% end %>
 
-        <%= form.field_container :blog_entry_image_alt do %>
+        <%= form.field_container :blog_entry_image_alt, class: ['form-group'] do %>
           <%= blog_entry_image_field.label :alt, Spree.t(:alt_text) %><br/>
-          <%= blog_entry_image_field.text_field :alt %>
+          <%= blog_entry_image_field.text_field :alt, :class => 'form-control' %>
         <% end %>
       <% end %>
     <% end %>
@@ -86,14 +85,14 @@
   </div>
 </div>
 
-<%= form.field_container :body do %>
+<%= form.field_container :body, class: ['form-group'] do %>
   <%= form.label :body %> <span class="required">*</span><br />
-  <%= form.text_area :body, {:cols => 60, :rows => 4, :class => 'fullwidth', :id => 'blog_entry_body'} %>
+  <%= form.text_area :body, {:cols => 60, :rows => 4, :class => 'form-control', :id => 'blog_entry_body'} %>
   <%= form.error_message_on :body %>
 <% end %>
 
-<%= form.field_container :summary do %>
+<%= form.field_container :summary, class: ['form-group'] do %>
   <%= form.label :summary %><br />
-  <%= form.text_area :summary, {:cols => 60, :rows => 4, :class => 'fullwidth', :id => 'blog_entry_summary'} %>
+  <%= form.text_area :summary, {:cols => 60, :rows => 4, :class => 'form-control', :id => 'blog_entry_summary'} %>
   <%= form.error_message_on :summary %>
 <% end %>
